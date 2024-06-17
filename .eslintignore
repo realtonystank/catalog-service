@@ -3,3 +3,7 @@ node_modules
 *.spec.ts
 tests/
 .github
+config/
+.prettierignore
+.prettierrc.json
+jest.config.js
