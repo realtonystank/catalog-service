@@ -16,4 +16,7 @@ export class CategoryService {
     updateCategoryById(id: mongoose.Types.ObjectId, updatedCategory: Category) {
         return categoryModel.findOneAndUpdate({ _id: id }, updatedCategory);
     }
+    deleteCategoryById(id: mongoose.Types.ObjectId) {
+        return categoryModel.findOneAndDelete({ _id: id });
+    }
 }

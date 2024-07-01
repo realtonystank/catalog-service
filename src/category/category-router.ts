@@ -50,4 +50,14 @@ router.patch(
     ),
 );
 
+router.delete(
+    "/:id",
+    authenticate as RequestHandler,
+    canAccess([Roles.ADMIN]),
+    asyncWrapper(
+        (req: Request, res: Response, next: NextFunction) =>
+            void categoryController.deleteCategoryById(req, res, next),
+    ),
+);
+
 export default router;

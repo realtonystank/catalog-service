@@ -68,4 +68,19 @@ export class CategoryController {
 
         return res.status(204).send();
     }
+
+    async deleteCategoryById(req: Request, res: Response, next: NextFunction) {
+        const id = req.params.id;
+
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            next(createHttpError(400, "Invalid url param."));
+            return;
+        }
+
+        await this.categoryService.deleteCategoryById(
+            id as unknown as mongoose.Types.ObjectId,
+        );
+
+        return res.status(204).send();
+    }
 }
