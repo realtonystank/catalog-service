@@ -1,16 +1,18 @@
-import express, { NextFunction, Request } from "express";
+import express, { NextFunction, Request, RequestHandler } from "express";
 import { CategoryController } from "./category-controller";
 import categoryValidator from "./category-validator";
 import { Response } from "express-serve-static-core";
 import { CategoryService } from "./category-service";
 import logger from "../config/logger";
 import { asyncWrapper } from "../common/utils/wrapper";
+import authenticate from "../common/middlewares/authenticate";
 const router = express.Router();
 const categoryService = new CategoryService();
 const categoryController = new CategoryController(categoryService, logger);
 
 router.post(
     "/",
+    authenticate as RequestHandler,
     categoryValidator,
     asyncWrapper(
         (req: Request, res: Response, next: NextFunction) =>
