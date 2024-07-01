@@ -50,4 +50,22 @@ export class CategoryController {
         );
         return res.json({ data: category });
     }
+
+    async updateCategoryById(req: Request, res: Response, next: NextFunction) {
+        const id = req.params.id;
+
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            next(createHttpError(400, "Invalid url param."));
+            return;
+        }
+
+        const { name, priceConfiguration, attributes } = req.body as Category;
+
+        await this.categoryService.updateCategoryById(
+            id as unknown as mongoose.Types.ObjectId,
+            { name, priceConfiguration, attributes },
+        );
+
+        return res.status(204).send();
+    }
 }

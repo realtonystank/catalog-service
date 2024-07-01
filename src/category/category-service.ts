@@ -13,4 +13,7 @@ export class CategoryService {
     fetchById(id: mongoose.Types.ObjectId) {
         return categoryModel.findOne({ _id: id });
     }
+    updateCategoryById(id: mongoose.Types.ObjectId, updatedCategory: Category) {
+        return categoryModel.findOneAndUpdate({ _id: id }, updatedCategory);
+    }
 }

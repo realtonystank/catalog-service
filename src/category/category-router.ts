@@ -39,4 +39,15 @@ router.get(
     ),
 );
 
+router.patch(
+    "/:id",
+    authenticate as RequestHandler,
+    canAccess([Roles.ADMIN]),
+    categoryValidator,
+    asyncWrapper(
+        (req: Request, res: Response, next: NextFunction) =>
+            void categoryController.updateCategoryById(req, res, next),
+    ),
+);
+
 export default router;
