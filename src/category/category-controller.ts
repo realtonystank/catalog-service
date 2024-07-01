@@ -27,6 +27,6 @@ export class CategoryController {
 
         this.logger.info("Created cateogry", { id: category._id });
 
-        res.json({ id: category._id });
+        return res.json({ id: category._id });
     }
 }

@@ -16,5 +16,5 @@ COPY . .
 # Expose the port the app will run on
 EXPOSE 5502
 
-# The command to run our app
+# The command to run our appz
 CMD ["npm", "run", "dev"]
