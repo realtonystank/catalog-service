@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import categoryModel from "./category-model";
 import { Category } from "./category-types";
 
@@ -8,5 +9,8 @@ export class CategoryService {
     }
     fetchAll() {
         return categoryModel.find();
+    }
+    fetchById(id: mongoose.Types.ObjectId) {
+        return categoryModel.findOne({ _id: id });
     }
 }

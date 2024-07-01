@@ -26,8 +26,16 @@ router.post(
 router.get(
     "/",
     asyncWrapper(
+        (req: Request, res: Response) =>
+            void categoryController.fetchAll(req, res),
+    ),
+);
+
+router.get(
+    "/:id",
+    asyncWrapper(
         (req: Request, res: Response, next: NextFunction) =>
-            void categoryController.fetchAll(req, res, next),
+            void categoryController.fetchById(req, res, next),
     ),
 );
 
