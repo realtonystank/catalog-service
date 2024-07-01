@@ -23,4 +23,12 @@ router.post(
     ),
 );
 
+router.get(
+    "/",
+    asyncWrapper(
+        (req: Request, res: Response, next: NextFunction) =>
+            void categoryController.fetchAll(req, res, next),
+    ),
+);
+
 export default router;

@@ -29,4 +29,10 @@ export class CategoryController {
 
         return res.json({ id: category._id });
     }
+
+    async fetchAll(req: Request, res: Response) {
+        const allCategories = await this.categoryService.fetchAll();
+
+        return res.json({ data: allCategories });
+    }
 }

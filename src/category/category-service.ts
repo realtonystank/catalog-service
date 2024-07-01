@@ -6,4 +6,7 @@ export class CategoryService {
         const newCategory = new categoryModel(category);
         return newCategory.save();
     }
+    fetchAll() {
+        return categoryModel.find();
+    }
 }
