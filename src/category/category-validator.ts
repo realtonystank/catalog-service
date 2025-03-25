@@ -25,6 +25,8 @@ export default checkSchema({
                         `${value} is invalid attribute for priceType field. Possible values are: [${validKeys.join(', ')}]`,
                     );
                 }
+
+                return true;
             },
         },
     },
