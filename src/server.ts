@@ -1,9 +1,9 @@
 import app from './app';
-import { Config } from './config/index';
 import logger from './config/logger';
+import config from 'config';
 
 const startServer = async () => {
-    const PORT = Config.PORT;
+    const PORT = config.get('server.port') || 5502;
     try {
         app.listen(PORT, () => logger.info(`Listening on port ${PORT}`));
     } catch (err) {
