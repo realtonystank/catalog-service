@@ -9,7 +9,9 @@ export class CategoryController {
     constructor(
         private categoryService: CategoryService,
         private logger: Logger,
-    ) {}
+    ) {
+        this.create = this.create.bind(this);
+    }
 
     async create(req: Request, res: Response, next: NextFunction) {
         const result = validationResult(req);
